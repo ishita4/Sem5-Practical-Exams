@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    
+    input[type="text"]:hover{
+        background-color: grey;
+        color: white;
+    }    
+</style>
+
+<body>
+   
+   <form action="">
+       Username  <input type="text"><br><br>
+       password  <input type="text" id="password"><br><br>
+       <div id="passError" class="error" style="color: red; "><small></small></div>
+
+       <input type="button" value="Log In" onclick="validate()"> 
+        
+   </form>
+    
+</body>
+
+    <script>
+        
+        function validate(){
+        
+            var password = document.getElementById("password").value;
+            if(password == "")
+                document.getElementById("passError").innerHTML= "Please enter your pass";
+            else{
+                document.getElementById("passError").innerHTML= "";
+
+                var regex= /^\w{12,}$/;
+                 if(regex.test(password) == false)
+                     document.getElementById("passError").innerHTML= "Please enter a valid pass";
+        }
+            
+        }
+        
+    
+    </script>
+</html>

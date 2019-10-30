@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+   <form action="">
+      Background color<br>
+       <select name="background" id="background">
+          <option value="" disabled selected>Select your option</option>
+           <option value="#4a8748"> Dark Green</option>
+           <option value="#ffdb44"> Mustard</option>
+           <option value="#ffbacb"> Pink</option>
+           <option value="#ccdcff"> Pale Blue</option>
+     </select><br><br>
+     
+     Font color<br>
+       <select name="font" id="font">
+          <option value="" disabled selected>Select your option</option>
+           <option value="#3a0e17"> Purple</option>
+           <option value="#b48260"> Brown</option>
+           <option value="#2b877e"> Green</option>
+           <option value="#d8ad45"> Mustard</option>
+     </select><br><br>
+     
+     <input type="button" value="Change color" id="submit">
+     
+     
+   </form>
+    
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+                      
+            $("#submit").click(function(){
+                var bg= $("#background").val();
+                var font= $("#font").val();
+                
+                //console.log(bg);
+                //console.log(font);
+                
+                $("body").css({
+                    'background-color':bg,
+                    'color' : font
+                });
+                
+            });                    
+    });
+    
+</script>
+</html>

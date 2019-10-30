@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<style>
+    #bill{
+        display: none;
+        width:500px;
+        height: 500px;
+        background-color: powderblue;
+    }
+    </style>
+<body>
+  
+  <table border="3" cellspacing=8px cellpadding=10px>
+      <tr>
+          <th>Toy Name</th>
+          <th>Price</th>
+      </tr>
+      
+      <tr>
+          <td>Scrabble</td>
+          <td>1000</td>
+      </tr>
+      
+      <tr>
+          <td>Memory Game</td>
+          <td>1300</td>
+      </tr>
+      
+      <tr>
+          <td>Ludo</td>
+          <td>700</td>
+      </tr>
+      
+      <tr>
+          <td>Monopoly</td>
+          <td>2000</td>
+      </tr>
+      
+      <tr>
+          <td>Snakes and Ladders</td>
+          <td>500</td>
+      </tr>
+  </table>
+   <br> <br>
+   <form action="">
+       
+           Select a toy<br>
+        <select name="toys" id="toy">
+           <option value="Scrabble">Scrabble</option>
+           <option value="Memory Game">Memory Game</option>
+           <option value="Ludo">Ludo</option>
+           <option value="Monopoly">Monopoly</option>
+           <option value="Snakes and Ladders">Snakes and Ladders</option>
+       </select><br><br>
+       
+       Select a quantity<br>
+       <input type="number" min="1" max="10" id="quant">
+       <br><br>
+       <input type="button" onclick="addItem()" value="Add Item">
+       <input type="button" onclick="generateBill()" value="Generate Bill">
+       
+   </form>
+   
+   <table id="demo"></table>
+   
+   <div class="wrapper" id="bill">
+       <h1 align="center"> BILL </h1>
+       <table id="demo2"></table>
+   </div>
+    
+</body>
+
+<script>
+    var table="<tr><th>Toy</th><th>Quantity</th></tr>";
+    var table2="<tr><th>Toy</th><th>Quantity</th><th>Price</th</tr>";
+     var total=0;
+    function addItem()
+    {
+        table += "<tr><td>" + document.getElementById("toy").value + "</td><td>" + document.getElementById("quant").value + "</td></tr>";
+        document.getElementById("demo").innerHTML= table;
+        
+        var name= document.getElementById("toy").value;
+        var quant= parseInt(document.getElementById("quant").value,10);
+       
+        
+        if(name == 'Scrabble'){
+            table2 += "<tr><td>" + name + "</td><td>" + quant +  "</td><td>" + 1000*quant +"</td></tr>";
+            total = total + 1000*quant;
+        }
+        else if(name == 'Memory Game'){
+            table2 += "<tr><td>" + name + "</td><td>" + quant +  "</td><td>" + 1300*quant +"</td></tr>";
+            total = total + 1300*quant;
+        }
+            
+         else if(name == 'Ludo'){
+             table2 += "<tr><td>" + name + "</td><td>" + quant +  "</td><td>" + 700*quant +"</td></tr>";
+             total = total + 700*quant;
+         }
+            
+         else if(name == 'Monopoly'){
+             table2 += "<tr><td>" + name + "</td><td>" + quant +  "</td><td>" + 2000*quant +"</td></tr>";
+             total = total + 2000*quant;
+         }
+            
+         else if(name == 'Snakes and Ladders'){
+             table2 += "<tr><td>" + name + "</td><td>" + quant +  "</td><td>" + 500*quant +"</td></tr>";
+             total = total + 500*quant;
+         }
+            
+        
+    }
+    
+    function generateBill(){
+       
+        table2 += "<tr><td><strong>TOTAL</strong></td><td></td><td>" + total +"</td></tr>";
+       document.getElementById("bill").style.display = 'block'; 
+       document.getElementById("demo2").innerHTML= table2; 
+    }
+</script>
+</html>

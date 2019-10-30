@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+   
+   <h1>abc</h1>
+   <div>
+       <p>para-1</p>
+       <p>para-2</p>
+   </div>
+   
+   <h1>xyz</h1>
+   <p>para-3</p>
+   
+   <input type="button" value="Change" id="button">
+    
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+<script>
+    
+    $(document).ready(function(){
+        $("#button").click(function(){
+              $("div").children().css('background-color','powderblue');                
+         });
+                   
+    });
+    
+</script>
+
+</html>

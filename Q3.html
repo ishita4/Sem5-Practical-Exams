@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    <style>
+        .wrapper{
+            margin:0 auto;
+            background-color: powderblue;
+            width: 400px;
+            height: 300px;
+        }
+        
+        form{
+            text-align: center;
+        }
+        
+        input[type=text]{
+            width: 80%;
+            height: 30px;
+            margin: 20px;
+        }
+        
+        input[type=button]{
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin:auto 10px;
+        }
+        
+        input[type=button]:hover{
+            color: aliceblue;
+            background-color: black;
+        }
+    
+    </style>
+    
+</head>
+<body>
+    <h1 align="center" > CALCULATOR </h1>
+   <div class="wrapper">
+       <form action="">
+           <input type="text" name="result" id="result"> <br>
+           
+           
+           <input type="button" value="1" onclick="addToEquation('1')">
+           <input type="button" value="2" onclick="addToEquation('2')">
+           <input type="button" value="3" onclick="addToEquation('3')">
+           <input type="button" value="+" onclick="addToEquation('+')"><br><br>
+           
+           <input type="button" value="4" onclick="addToEquation('4')">
+           <input type="button" value="5" onclick="addToEquation('5')">
+           <input type="button" value="6" onclick="addToEquation('6')">
+           <input type="button" value="-" onclick="addToEquation('-')"><br><br>
+           
+           <input type="button" value="7" onclick="addToEquation('7')">
+           <input type="button" value="8" onclick="addToEquation('8')">
+           <input type="button" value="9" onclick="addToEquation('9')">
+           <input type="button" value="X" onclick="addToEquation('*')"><br><br>
+           
+           <input type="button" value="AC" onclick="clearEquation()">
+           <input type="button" value="0" onclick="addToEquation('0')">
+           <input type="button" value="=" onclick="solveEquation()">
+           <input type="button" value="/" onclick="addToEquation('/')"><br><br>
+           
+       </form>
+   </div>
+    
+</body>
+<script>
+    
+    function addToEquation(num)
+    {
+        document.getElementById("result").value += num;
+    }
+    
+    function solveEquation()
+    {
+        console.log(document.getElementById("result").value);
+        var res= eval(document.getElementById("result").value);
+        
+        //To ensure no undefined 
+        if(res)
+        {
+            document.getElementById("result").value = res;
+        }
+        
+    }
+    
+    function clearEquation()
+    {
+        document.getElementById("result").value = "";
+    }
+    
+    
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+   <h1>Converter</h1>
+   
+   <form onsubmit="return convert()">
+       Enter the distance (km) <input type="text" id="dist"><br><br>
+       Enter the weight (kg) <input type="text" id="weight"><br><br>
+       
+       <input type="submit" value="Convert"> <br><br>
+   </form>
+    
+    <span id="st1" style="display: none">The Distance in miles is <p id="newDist"></p></span>
+    <span id="st2" style="display: none">The Weight in pounds is <p id="newWeight"></p></span>
+    
+</body>
+
+<script>
+    
+    function convert(){
+        
+        var dist = document.getElementById("dist").value;
+        var weight = document.getElementById("weight").value;
+        
+        
+        if(dist)
+        {
+            document.getElementById("st1").style.display = 'block'; //displaying statement
+            document.getElementById("newDist").innerHTML= dist / 1.609; //displaying value
+        }
+        
+        if(weight)
+        {
+            document.getElementById("st2").style.display = 'block';
+            document.getElementById("newWeight").innerHTML= weight * 2.205;
+        }
+        
+        return false;
+    }
+    
+</script>
+
+</html>

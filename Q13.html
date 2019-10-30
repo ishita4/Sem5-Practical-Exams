@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+    
+    <style>  
+        .subject{
+            width: 4%;
+        }
+    
+    </style>
+
+    <body>
+       
+        
+        <div> 
+        <h2>College Admission Form</h2>
+        <form action="#">
+            First Name <br> <input type="text" required> <br><br>
+            Last Name <br> <input type="text" required> <br><br>
+            EMail <br> <input type="email" required> <br><br>
+            Phone Number <br> <input type="text" required> <br><br>
+            Physics Marks <br> <input type="text" class="subject" id="physics" required> / 100 <br><br>
+            Chemistry Marks <br> <input type="text" class="subject" id="chem" required> / 100 <br><br>
+            Maths Marks <br> <input type="text" class="subject" id="maths" required> / 100 <br><br>
+           <input type="button" value="Submit" onclick="findPercentage()"> <br> <br>
+           
+        </form>
+        
+            <span id="display"></span>
+        
+        </div>
+    </body>
+    
+    <script>
+        function findPercentage(){
+            
+            var p = parseInt(document.getElementById("physics").value,10);
+            var c = parseInt(document.getElementById("chem").value,10);
+            var m = parseInt(document.getElementById("maths").value,10);
+    
+            var perc = (p+c+m)/3;
+            
+            document.getElementById("display").innerHTML= "The percentage is" + perc;
+        }
+    
+    </script>
+
+</html>

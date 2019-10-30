@@ -1,0 +1,139 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+   <form action="" onsubmit="return validate()">
+      
+      Name<br> <input type="text" id="name"><br><br>
+       <div id="nameError" class="error" style="color: red; "><small></small></div>
+       
+      Age<br> <input type="text" id="age"><br><br>
+         <div id="ageError" class="error" style="color: red; "><small></small></div>
+          
+      Address<br> <textarea rows="3" id="address"></textarea><br><br>
+      <div id="addressError" class="error" style="color: red; "><small></small></div>
+      
+      City<br>
+      <select name="cities" id="city">
+          <option value="Mumbai">Mumbai</option>
+          <option value="Delhi">Delhi</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Chennai">Chennai</option>
+      </select><br><br>
+      <div id="cityError" class="error" style="color: red; "><small></small></div>
+      
+      
+      Mobile Number<br> <input type="text" id="phone"><br><br>
+      <div id="phoneError" class="error" style="color: red; "><small></small></div>
+      
+      Username<br> <input type="text" id="username"><br><br>
+      <div id="usernameError" class="error" style="color: red; "><small></small></div>
+  
+      Password<br> <input type="text" id="password"><br><br>
+      <div id="passError" class="error" style="color: red; "><small></small></div>
+   
+      Email<br> <input type="text" id="email"><br><br>
+      <div id="emailError" class="error" style="color: red; "><small></small></div>
+   
+      <input type="button" name="submit" value="Submit" onclick="validate()"><br><br>
+       
+       
+   </form>
+    
+</body>
+
+<script>
+    
+    function validate(){
+        
+        var name= document.getElementById("name").value;
+        var age= document.getElementById("age").value;
+        var address= document.getElementById("address").value;
+        var city= document.getElementById("city").value;
+        var phone= document.getElementById("phone").value;
+        var username= document.getElementById("username").value;
+        var password= document.getElementById("password").value;
+        var email= document.getElementById("email").value;
+        
+        //Name
+        if(name == "")
+            document.getElementById("nameError").innerHTML= "Please enter your name";
+        else{
+            document.getElementById("nameError").innerHTML= "";
+            
+            var regex= /^[a-zA-Z\s]+$/;
+             if(regex.test(name) == false)
+                 document.getElementById("nameError").innerHTML= "Please enter a valid name";
+        }
+        
+        //Age
+        if(age == "")
+            document.getElementById("ageError").innerHTML= "Please enter your age";
+        else{
+            document.getElementById("ageError").innerHTML= "";
+            
+            var regex= /^[1-9]\d{0,2}$/;
+             if(regex.test(age) == false)
+                 document.getElementById("ageError").innerHTML= "Please enter a valid age";
+        }
+        
+        //Address
+        if(address == "")
+            document.getElementById("addressError").innerHTML= "Please enter your address";
+        else{
+            document.getElementById("addressError").innerHTML= "";
+        }
+        
+        
+        //Phone number
+        if(phone == "")
+            document.getElementById("phoneError").innerHTML= "Please enter your phone number";
+        else{
+            document.getElementById("phoneError").innerHTML= "";
+            
+            var regex= /^[1-9]\d{9}$/;
+             if(regex.test(phone) == false)
+                 document.getElementById("phoneError").innerHTML= "Please enter a valid phone number";
+        }
+        
+        //username
+        if(username == "")
+            document.getElementById("usernameError").innerHTML= "Please enter your username";
+        else{
+            document.getElementById("usernameError").innerHTML= "";
+            
+            var regex= /^[a-zA-Z]\S+$/;
+             if(regex.test(username) == false)
+                 document.getElementById("usernameError").innerHTML= "Please enter a valid username";
+        }
+        
+        //password
+        if(password == "")
+            document.getElementById("passError").innerHTML= "Please enter your pass";
+        else{
+            document.getElementById("passError").innerHTML= "";
+            
+            var regex= /((?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])[a-zA-Z0-9!@#\$%\^&\*]{8,}/;
+             if(regex.test(password) == false)
+                 document.getElementById("passError").innerHTML= "Please enter a valid pass";
+        }
+        
+        //email
+        if(email == "")
+            document.getElementById("emailError").innerHTML= "Please enter your email";
+        else{
+            document.getElementById("emailError").innerHTML= "";
+            
+            var regex= /^[a-zA-Z0-9_+-\.]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+             if(regex.test(email) == false)
+                 document.getElementById("emailError").innerHTML= "Please enter a valid email";
+        }
+      
+    }
+    
+    
+</script>
+</html>

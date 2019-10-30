@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   
+   <form action="" onsubmit="return validate()">
+      
+      Name<br> <input type="text" id="name"><br><br>
+       <div id="nameError" class="error" style="color: red; "><small></small></div>
+       
+      Surname <br> <input type="text" id="surname"> <br><br>
+        <div id="surnameError" class="error" style="color: red; "><small></small></div>
+            
+      Gender <br> <input type="radio" name="gender" value="male" > Male
+           <input type="radio" name="gender" value="female">  Female <br><br>
+           <div id="genderError" class="error" style="color: red; "><small></small></div>
+    
+      Address<br> <textarea rows="3" id="address"></textarea><br><br>
+      <div id="addressError" class="error" style="color: red; "><small></small></div>
+      
+   
+      Phone Number<br> <input type="text" id="phone"><br><br>
+      <div id="phoneError" class="error" style="color: red; "><small></small></div>
+      
+   
+      Email<br> <input type="text" id="email"><br><br>
+      <div id="emailError" class="error" style="color: red; "><small></small></div>
+   
+      <input type="button" name="submit" value="Submit" id="submit"><br><br>
+       
+       
+   </form>
+    
+</body>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<script>
+    
+    $(document).ready(function(){
+                      
+            $("#submit").click(function(){
+                var name= $("#name").val();
+                var surname= $("#surname").val();
+                var gender= $("input[name=gender]:checked").val();
+                var address= $("#address").val();
+                var phone= $("#phone").val();
+                var email= $("#email").val();  
+                
+                console.log(name + surname + gender + address + phone + email);
+                
+                //Name
+                if(name == "")
+                    $("#nameError").html("Please enter your name");
+                else{    
+                    $("#nameError").html("");
+
+                    var regex= /^[a-zA-Z]+$/;
+                     if(regex.test(name) == false)
+                         $("#nameError").html("Please enter a valid name");
+                }
+                
+                //Surname
+                if(surname == "")
+                    $("#nameError").html("Please enter your surname");
+                else{
+                    $("#nameError").html("");
+
+                    var regex= /^[a-zA-Z]+$/;
+                     if(regex.test(surname) == false)
+                         $("#nameError").html("Please enter a valid surname");
+                }
+                
+                /*********** Convert the Javascript in the reamining code to jQuery similarly *******************/
+
+                //Gender
+                if(gender == undefined)
+                    document.getElementById("genderError").innerHTML= "Please enter your gender";
+                else{
+                    document.getElementById("genderError").innerHTML= "";
+                }
+
+                //Address
+                if(address == "")
+                    document.getElementById("addressError").innerHTML= "Please enter your address";
+                else{
+                    document.getElementById("addressError").innerHTML= "";
+                }
+
+
+                //Phone number
+                if(phone == "")
+                    document.getElementById("phoneError").innerHTML= "Please enter your phone number";
+                else{
+                    document.getElementById("phoneError").innerHTML= "";
+
+                    var regex= /^[1-9]\d{9}$/;
+                     if(regex.test(phone) == false)
+                         document.getElementById("phoneError").innerHTML= "Please enter a valid phone number";
+                }
+
+                //email
+                if(email == "")
+                    document.getElementById("emailError").innerHTML= "Please enter your email";
+                else{
+                    document.getElementById("emailError").innerHTML= "";
+
+                    var regex= /^[a-zA-Z0-9_+-\.]+@[a-zA-Z]+\.[a-zA-Z]+$/;
+                     if(regex.test(email) == false)
+                         document.getElementById("emailError").innerHTML= "Please enter a valid email";
+                }
+
+            });                    
+    });
+    
+    
+</script>
+</html>
