@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+
+
+<body>
+   <h1> Feedback </h1>
+   <form>
+       
+           
+            Please provide your feedback below:<br><br>
+            How do you rate your exp? <br> 
+           <input type="radio" name="rating" value="Bad" > Bad
+           <input type="radio" name="rating" value="Average">  Average 
+           <input type="radio" name="rating" value="Good">  Good <br><br><br>
+    
+          Comments<br>
+          <textarea id="comment" placeholder="Your comments" rows="5" id="rating" required></textarea><br><br>
+  
+           Name <br> 
+           <input type="text" name=name id="name" required>
+            
+            Email 
+            <input type="text" name=email id="email" required> <br><br>
+            
+           <input type="button" value="Post" id="post"><br><br>
+           
+           <div id="display"></div>
+       
+   </form>
+    
+</body>
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+                      
+            $("#post").click(function(){
+                
+                var exp = $("input[name=rating]:checked").val();
+                var comment = $("#comment").val();
+                var name = $("#name").val();
+                var email = $("#email").val();
+                $("#display").load("feedback.php",{exp:exp,comment:comment,name:name,email:email});
+            });                    
+    });
+    
+</script>
+
+</html>
