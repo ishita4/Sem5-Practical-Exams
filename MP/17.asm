@@ -1,3 +1,6 @@
+;NOTE ~ All the inputs and outputs are in HEXADECIMAL. For eg, gcd of inputs 08 and 36 will be 02 considering the inputs are HEXADECIMAL 
+;and not 04 (as would have been if the inputs were in decimal)
+
 data segment
 
 msg1 db 10,13, "Enter the number: $"
