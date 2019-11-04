@@ -1,0 +1,130 @@
+import java.lang.*;
+import java.util.*;
+
+public class Main
+{
+      public static void main (String[]args)
+      {
+    
+            Main m = new Main ();
+            Scanner sc = new Scanner (System.in);
+            System.out.println ("Enter the number of nodes");
+            int n = sc.nextInt();
+            
+            int a[][] = new int[n+1][n+1];
+            int arr[][] = m.read (a, n);
+            
+            System.out.println ("The adjacency matrix entered is ");
+            for(int i=1 ; i<=n; i++)
+                {
+                    for(int j=1; j<=n; j++)
+                    {
+                        System.out.print(arr[i][j] + "\t");
+                    }
+                    System.out.println();
+                }
+            
+            m.djikstra(arr,n);
+        
+      }
+
+      int[][] read (int a[][], int n)
+      {
+            Scanner sc = new Scanner (System.in);
+            System.out.println ("Enter the adjacency matrix");
+            
+            for(int i=1 ; i<=n; i++)
+            {
+                for(int j=1; j<=n; j++)
+                {
+                    a[i][j]= sc.nextInt();
+                }
+            }
+            
+            return a;
+      }
+  
+     void djikstra (int arr[][], int n)
+      {
+            Scanner sc = new Scanner (System.in);
+            
+            int dist[]=new int[n+1];
+            int pred[]=new int[n+1];
+            int visited[]=new int[n+1];
+            
+            for(int i=1; i<=n ;i++)
+            {
+                dist[i]=9999;
+                pred[i]=9999;
+            }
+            
+            System.out.println ("Enter the source node:");
+            int source = sc.nextInt();
+            int current, count=n,min;
+            
+            dist[source]=0;
+            visited[source]=1;
+            
+            current=source;
+            
+            while(count!=0)
+            {
+                for(int i=1; i<=n; i++)
+                {
+                    if(arr[current][i]!=0 && visited[i]!=1)
+                    {
+                        if(dist[current] + arr[current][i] < dist[i])
+                        {
+                            dist[i]=dist[current] + arr[current][i];
+                            pred[i]=current;
+                        }
+                    }
+                    
+                }
+                
+                min=9999;
+                
+                for(int i=1; i<=n ;i++)
+                {
+                    if(visited[i]!=1 && dist[i]<min)
+                    {
+                        min=dist[i];
+                        current=i;
+                    }
+                }
+                
+                visited[current]=1;
+                count--;
+                
+            }
+            
+            System.out.println("Distance array:");
+            for(int i=1; i<=n ;i++)
+                System.out.print(dist[i] + "\t");
+                
+            System.out.println();
+            System.out.println("Pred array:");
+            for(int i=1; i<=n ;i++)
+                System.out.print(pred[i] + "\t");
+                
+            int j;
+            System.out.println();
+            
+            for(int i=1; i<=n; i++)
+            {
+                
+                j=i;
+                if( j!= source)
+                    System.out.print("The path for node " + i + " is " + i);
+                
+                while(j != source)
+                {
+                    
+                    j=pred[j];
+                    System.out.print("<--" + j);
+                }
+                System.out.println();
+            }
+            
+      }
+}
