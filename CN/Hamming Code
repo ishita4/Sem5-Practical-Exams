@@ -1,0 +1,117 @@
+import java.util.*;
+import java.lang.Math.*;
+
+public class Main{
+    
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        
+        int code[] = new int[100];
+        System.out.println("Enter the number of data bits(4 or 8)");
+        int n = sc.nextInt();
+    
+        int total_bits=0;
+        if(n>=2 && n<=4)
+            total_bits = 3;
+        else if(n>=5 && n<=11)
+            total_bits = 4;
+        else if(n>=12 && n<=26)
+            total_bits = 5;
+        else if(n>=27 && n<=57)
+            total_bits = 6;
+        else if(n>=58 && n<=120)
+            total_bits = 7;
+            
+        System.out.println("Enter the data bits (D4 to D1)");
+        for(int i=total_bits + n; i>=1; i--)
+        {
+            if(i != 1 && i != 2 && i != 4 && i != 8 && i != 16 && i != 32)
+            {
+                System.out.println("i is " + i);
+                code[i] = sc.nextInt();
+            }
+                
+        }   
+        
+        System.out.println();   
+        System.out.println("The data bits entered are:");
+        for(int i=total_bits + n;i>=1;i--)
+        {
+            if(i != 1 && i != 2 && i != 4 && i != 8 &&  i != 16 && i != 32)
+                System.out.print(code[i] + "\t");
+        }
+        /*code[7]= sc.nextInt();
+        code[6]= sc.nextInt();
+        code[5]= sc.nextInt();
+        code[3]= sc.nextInt();*/
+        
+        //Parity bit P1
+        int count=0;
+        for(int i=3 ;i<=total_bits+n;i+=2)
+        {
+            //System.out.println("Bits in p1:" + i);
+            if(code[i]==1)
+                count++;
+        }
+        //System.out.println("count p1:" + count);
+        if(count % 2!=0)
+            code[1]=1;
+            
+            
+            
+        //Parity bit P2
+        count=0;
+        for(int i=2 ;i<=total_bits+n;i++)
+        {
+            //System.out.println("Bits in p2:" + i);
+            if(code[i]==1)
+                count++;
+                
+            if(i % 2 !=0)
+                i= i+2;
+        }
+        //System.out.println("count p2:" + count);
+        if(count % 2!=0)
+            code[2]=1;
+            
+            
+            
+            
+        //Parity bit P4
+        count=0;
+        int flip=0;
+        int k=2;
+        for(int i=4 ;i<=total_bits+n;i++)
+        {
+            if( flip==1 && i % 4 == 0)
+            {
+                flip=0;
+                i=i+3;
+                continue;
+            }
+            
+            //System.out.println("Bits in p4:" + i);
+            if(code[i]==1)
+                count++;
+                
+            if(i % 4 == 0)
+            {
+                flip=1;
+            }
+                
+        }
+       // System.out.println("count p4:" + count);
+        if(count % 2!=0)
+            code[4]=1;
+            
+            
+        System.out.println();
+        System.out.println("The hamming code is");
+        for(int i=total_bits+n;i>=1;i--)
+        {
+                System.out.print(code[i] + "\t");
+        }
+ 
+    }
+}
