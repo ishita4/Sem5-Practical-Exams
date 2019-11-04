@@ -1,0 +1,129 @@
+import java.lang.*;
+import java.util.*;
+
+public class Main
+{
+      public static void main (String[]args)
+      {
+    
+            Scanner sc = new Scanner (System.in);
+            System.out.println ("Enter the number of data bits");
+            int data_bits = sc.nextInt();
+            
+            int data[] = new int[data_bits];
+            System.out.println ("Enter Data Bits ");
+            for(int i=0 ; i<data_bits; i++)
+            {
+                data[i]= sc.nextInt();      
+            }
+          
+            
+            System.out.println ("Enter the number of bits in divisor");
+            int divisor_bits = sc.nextInt();
+            
+            int divisor[] = new int[divisor_bits];
+            System.out.println ("Enter Divisor Bits ");
+            for(int i=0 ; i<divisor_bits; i++)
+            {
+                divisor[i]= sc.nextInt();      
+            }
+          
+          
+            int dividend[] = new int[data_bits + divisor_bits];
+            for(int i=0 ; i<data_bits; i++)
+            {
+                dividend[i]= data[i];      
+            }
+            
+            System.out.println ("Dividend after appending zeroes");
+            for(int i=0 ; i<data_bits + divisor_bits - 1; i++)
+            {
+                System.out.print(dividend[i]);  
+            }
+            
+            int zero[]= new int[100];
+            int temp[]= new int[data_bits + divisor_bits];
+            for(int i=0 ; i< divisor_bits + data_bits; i++)
+            {
+                temp[i]=dividend[i];  
+            }
+          
+            int k,msb,j;
+            for(int i=0; i<data_bits; i++)
+            {
+                k=0;
+                msb = temp[i];
+                for(j=i; j<divisor_bits + i; j++)
+                {
+                    if(msb == 0)
+                        temp[j] = temp[j]^zero[k];
+                    else
+                        temp[j]= temp[j]^divisor[k];
+                    k++;
+                }
+            }
+          
+            System.out.println();
+            
+            System.out.print("The CRC is: ");
+            for(int i=data_bits;i<data_bits + divisor_bits - 1;i++)
+            {
+                dividend[i]=temp[i];
+                System.out.print(dividend[i]);
+            }
+            
+            System.out.print("\nThe code data that is transmitted is :" );
+            for(int i=0;i<data_bits + divisor_bits - 1;i++)
+            {
+                System.out.print(dividend[i]);
+            }
+            
+            
+            /***********************CHECKING****************/
+    
+              for(int i=0 ; i<data_bits + divisor_bits - 1; i++)
+                {
+                    dividend[i]= sc.nextInt();      
+                }
+        
+                for(int i=0 ; i< divisor_bits + data_bits; i++)
+                {
+                    temp[i]=dividend[i];  
+                }
+                 
+                 
+            for(int i=0; i<data_bits; i++)
+            {
+                k=0;
+                msb = temp[i];
+                for(j=i; j<divisor_bits + i; j++)
+                {
+                    if(msb == 0)
+                        temp[j] = temp[j]^zero[k];
+                    else
+                        temp[j]= temp[j]^divisor[k];
+                    k++;
+                }
+            }
+          
+            System.out.println();
+            
+            int flag=0;
+            for(int i=data_bits;i<data_bits + divisor_bits - 1;i++)
+            {
+                if(temp[i] != 0)
+                {
+                    System.out.print("Error");
+                    flag=1;
+                    break;
+                }
+                
+            }
+            
+            if(flag ==0)
+                System.out.print("No Error");
+        
+        
+      }
+
+}
