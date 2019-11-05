@@ -26,7 +26,7 @@ void main()
 	asm mov bx, temp
 	asm cmp bx, min
 	asm jnc label1
-	asm mov min, ax
+	asm mov min, bx
 	label1:
 	asm loop outer
 
